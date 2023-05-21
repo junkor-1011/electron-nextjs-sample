@@ -14,5 +14,27 @@ RUN corepack enable pnpm yarn npm && \
     corepack prepare yarn@${YARN_VERSION} --activate && \
     corepack prepare npm@${NPM_VERSION}
 
+# wine
+RUN dpkg --add-architecture i386 && \
+    mkdir -pm755 /etc/apt/keyrings && \
+    wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key && \
+    wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
+RUN apt-get update -y && \
+    apt-get install -y --install-recommends winehq-stable && \
+    apt-get -y autoremove && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# add user
+ENV USER_NAME=builder
+ARG USER_UID=1000
+RUN useradd -m -s /bin/zsh -u ${USER_UID} ${USER_NAME}
+
+RUN mkdir -p /project && chown -R ${USER_UID}:${USER_UID} /project
+
+
+USER ${USER_NAME}
+WORKDIR /project
+
 # for electron builder
 # ...
