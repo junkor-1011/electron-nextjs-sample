@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  builder:
+    build: .
+    volumes:
+      - ./package.json:/project/package.json
+      - ./pnpm-lock.yaml:/project/pnpm-lock.yaml
+      - ./electron-src:/project/electron-src
+      - ./renderer:/project/renderer
+      - ./dist:/project/dist
+
