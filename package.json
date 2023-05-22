@@ -2,17 +2,20 @@
   "name": "example-app",
   "version": "0.0.1",
   "private": true,
+  "packageManager": "pnpm@8.5.1",
   "main": "main/index.js",
   "productName": "ElectronTypescriptNext",
   "scripts": {
+    "test": "jest --passWithNoTests",
     "clean": "rimraf dist main renderer/out renderer/.next",
-    "dev": "npm run build-electron && electron .",
+    "dev": "pnpm build-electron && electron .",
     "build-renderer": "next build renderer",
     "build-electron": "tsc -p electron-src",
-    "build": "npm run build-renderer && npm run build-electron",
-    "pack-app": "npm run build && electron-builder --dir",
-    "dist": "npm run build && electron-builder",
-    "type-check": "tsc -p ./renderer/tsconfig.json && tsc -p ./electron-src/tsconfig.json"
+    "build": "pnpm build-renderer && pnpm build-electron",
+    "pack-app": "pnpm build && electron-builder --dir",
+    "dist": "pnpm build && electron-builder",
+    "type-check": "tsc -p ./renderer/tsconfig.json && tsc -p ./electron-src/tsconfig.json",
+    "prepare": "husky install"
   },
   "dependencies": {
     "electron-is-dev": "^2.0.0",
@@ -21,12 +24,20 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.1",
     "@types/node": "^20.2.3",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
     "electron": "^24.3.1",
     "electron-builder": "^23.6.0",
+    "eslint": "^8.41.0",
+    "eslint-config-next": "^13.4.3",
+    "eslint-config-prettier": "^8.8.0",
+    "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "lint-staged": "^13.2.2",
     "next": "^13.4.3",
+    "prettier": "^2.8.8",
     "rimraf": "^5.0.1",
     "typescript": "^5.0.4"
   },
