@@ -5,3 +5,5 @@
   - prettier --write
 '*.{json,md,yml,yaml}':
   - prettier --write
+'*.{css,less,sass,scss}':
+  - stylelint --fix
