@@ -1,0 +1,7 @@
+'**/*.{ts,tsx}':
+  - eslint --fix
+  - prettier --write
+'*.{cjs,js}':
+  - prettier --write
+'*.{json,md,yml,yaml}':
+  - prettier --write
