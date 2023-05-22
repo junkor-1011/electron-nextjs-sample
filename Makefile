@@ -9,7 +9,7 @@ ELECTRON_SRCDIR := electron-src
 RENDERER_SRCDIR := renderer
 DIST_DIR := dist
 
-SRCS := $(wildcard $(ELECTRON_SRCDIR)/*) $(wildcard $(RENDERER_SRCDIR)/*.ts) $(wildcard $(RENDERER_SRCDIR)/*.tsx) $(wildcard $(RENDERER_SRCDIR)/*.css) $(wildcard $(RENDERER_SRCDIR)/*.scss) 
+SRCS := pnpm-lock.yaml $(wildcard $(ELECTRON_SRCDIR)/*) $(wildcard $(RENDERER_SRCDIR)/*.ts) $(wildcard $(RENDERER_SRCDIR)/*.tsx) $(wildcard $(RENDERER_SRCDIR)/*.css) $(wildcard $(RENDERER_SRCDIR)/*.scss) 
 
 COMPILED := $(wildcard main/*.js) $(wildcard renderer/out/*)
 
